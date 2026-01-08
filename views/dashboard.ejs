@@ -1,0 +1,273 @@
+<div class="page-header">
+    <h2 class="page-title">Vulnerability Dashboard</h2>
+    <p style="color: var(--text-secondary);">Select a vulnerability to exploit.</p>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px;">
+
+    <!-- Card: Reflected XSS -->
+    <div class="card">
+        <h3>Reflected XSS</h3>
+        <p style="color: var(--text-secondary); margin: 12px 0; font-size: 0.9rem;">
+            Reflects user input directly into the HTML response without escaping.
+        </p>
+        <a href="/vulnerabilities/xss?input=<script>alert('XSS')</script>" class="btn btn-primary"
+            style="width: 100%;">Exploit</a>
+    </div>
+
+    <!-- Card: Open Redirect -->
+    <div class="card">
+        <h3>Open Redirect</h3>
+        <p style="color: var(--text-secondary); margin: 12px 0; font-size: 0.9rem;">
+            Redirects the user to an arbitrary URL specified in the query parameter.
+        </p>
+        <a href="/vulnerabilities/redirect?url=https://example.com" class="btn btn-danger"
+            style="width: 100%;">Exploit</a>
+    </div>
+
+    <!-- Card: OS Command Injection -->
+    <div class="card">
+        <h3>OS Command Injection</h3>
+        <p style="color: var(--text-secondary); margin: 12px 0; font-size: 0.9rem;">
+            Executes arbitrary system commands via the <code>ping</code> utility.
+        </p>
+        <a href="/vulnerabilities/ping?ip=127.0.0.1; whoami" class="btn btn-danger" style="width: 100%;">Exploit</a>
+    </div>
+
+    <!-- Card: SQL Injection -->
+    <div class="card">
+        <h3>SQL Injection</h3>
+        <p style="color: var(--text-secondary); margin: 12px 0; font-size: 0.9rem;">
+            Traditional Union-based or Error-based SQL injection in search fields.
+        </p>
+        <a href="/vulnerabilities/sqli?search=' OR '1'='1" class="btn btn-primary" style="width: 100%;">Exploit</a>
+    </div>
+
+    <!-- Card: Local File Inclusion -->
+    <div class="card">
+        <h3>Local File Inclusion (LFI)</h3>
+        <p style="color: var(--text-secondary); margin: 12px 0; font-size: 0.9rem;">
+            Reads arbitrary files from the server filesystem.
+        </p>
+        <a href="/vulnerabilities/lfi?file=/etc/passwd" class="btn btn-danger" style="width: 100%;">Exploit</a>
+    </div>
+
+    <!-- Card: Python Code Injection -->
+    <div class="card">
+        <h3>Python Code Injection</h3>
+        <p style="color: var(--text-secondary); margin: 12px 0; font-size: 0.9rem;">
+            Executes arbitrary Python code via a subprocess.
+        </p>
+        <a href="/vulnerabilities/pymath?code=2+2" class="btn btn-danger" style="width: 100%;">Exploit</a>
+    </div>
+
+    <!-- Card: Client-Side Template Injection -->
+    <div class="card">
+        <h3>Angular CSTI</h3>
+        <p style="color: var(--text-secondary); margin: 12px 0; font-size: 0.9rem;">
+            Injects AngularJS expressions into a template.
+        </p>
+        <a href="/vulnerabilities/csti?name={{7*7}}" class="btn btn-primary" style="width: 100%;">Exploit</a>
+    </div>
+
+    <!-- Card: SSRF -->
+    <div class="card">
+        <h3>SSRF</h3>
+        <p style="color: var(--text-secondary); margin: 12px 0; font-size: 0.9rem;">
+            Server performs requests to arbitrary internal or external URLs.
+        </p>
+        <a href="/vulnerabilities/ssrf?url=http://localhost:3000" class="btn btn-primary"
+            style="width: 100%;">Exploit</a>
+    </div>
+
+    <!-- Card: Unprotected JSON -->
+    <div class="card">
+        <h3>Unprotected API</h3>
+        <p style="color: var(--text-secondary); margin: 12px 0; font-size: 0.9rem;">
+            Sensitive data exposed via JSON endpoint without authentication.
+        </p>
+        <a href="/vulnerabilities/api/users" class="btn btn-outline" style="width: 100%;">Exploit</a>
+    </div>
+
+    <!-- Card: Cookie Injection -->
+    <div class="card">
+        <h3>Cookie Injection</h3>
+        <p style="color: var(--text-secondary); margin: 12px 0; font-size: 0.9rem;">
+            Sets a cookie based on user input, enabling session fixation or header injection.
+        </p>
+        <a href="/vulnerabilities/cookie-reflect?param=evil" class="btn btn-outline" style="width: 100%;">Exploit</a>
+    </div>
+
+    <!-- Card: IDOR -->
+    <div class="card">
+        <h3>IDOR</h3>
+        <p style="color: var(--text-secondary); margin: 12px 0; font-size: 0.9rem;">
+            Access other users' profiles via simple ID manipulation.
+        </p>
+        <a href="/vulnerabilities/idor/user?id=1" class="btn btn-danger" style="width: 100%;">Exploit</a>
+    </div>
+
+    <!-- Card: Stored XSS -->
+    <div class="card">
+        <h3>Stored XSS</h3>
+        <p style="color: var(--text-secondary); margin: 12px 0; font-size: 0.9rem;">
+            Persistent cross-site scripting in a Guestbook.
+        </p>
+        <a href="/vulnerabilities/stored-xss" class="btn btn-primary" style="width: 100%;">Exploit</a>
+    </div>
+
+    <!-- Card: Insecure Deserialization -->
+    <div class="card">
+        <h3>Insecure Deserialization</h3>
+        <p style="color: var(--text-secondary); margin: 12px 0; font-size: 0.9rem;">
+            Execute arbitrary code via insecure object deserialization (simulated).
+        </p>
+        <a href="/vulnerabilities/deserialize" class="btn btn-danger" style="width: 100%;">Exploit</a>
+    </div>
+
+    <!-- Card: Prototype Pollution -->
+    <div class="card">
+        <h3>Prototype Pollution</h3>
+        <p style="color: var(--text-secondary); margin: 12px 0; font-size: 0.9rem;">
+            Inject properties into Object.prototype via recursive merge.
+        </p>
+        <a href="/vulnerabilities/pollution" class="btn btn-primary" style="width: 100%;">Exploit</a>
+    </div>
+
+    <!-- Card: Insecure Cookies -->
+    <div class="card">
+        <h3>Insecure Cookies</h3>
+        <p style="color: var(--text-secondary); margin: 12px 0; font-size: 0.9rem;">
+            Sets a cookie missing HttpOnly, Secure, and SameSite attributes.
+        </p>
+        <a href="/vulnerabilities/insecure-cookies" class="btn btn-danger" style="width: 100%;">Exploit</a>
+    </div>
+
+    <!-- Card: CORS Vulnerabilities -->
+    <div class="card">
+        <h3>CORS Vulnerabilities</h3>
+        <p style="color: var(--text-secondary); margin: 12px 0; font-size: 0.9rem;">
+            Test 5 distinct CORS misconfigurations (Wildcard, Regex Bypass, Null Origin, etc).
+        </p>
+        <a href="/vulnerabilities/cors" class="btn btn-primary" style="width: 100%;">Exploit</a>
+    </div>
+
+    <!-- Card: XPath Injection -->
+    <div class="card">
+        <h3>XPath Injection</h3>
+        <p style="color: var(--text-secondary); margin: 12px 0; font-size: 0.9rem;">
+            Inject XPath queries to bypass authentication or extract data.
+        </p>
+        <a href="/vulnerabilities/xpath?username=admin" class="btn btn-outline" style="width: 100%;">Exploit</a>
+    </div>
+
+    <!-- Card: LDAP Injection -->
+    <div class="card">
+        <h3>LDAP Injection</h3>
+        <p style="color: var(--text-secondary); margin: 12px 0; font-size: 0.9rem;">
+            Manipulate LDAP filters (e.g., using `*`) to access unauthorized data.
+        </p>
+        <a href="/vulnerabilities/ldap?user=*" class="btn btn-outline" style="width: 100%;">Exploit</a>
+    </div>
+
+    <!-- Card: Mass Assignment -->
+    <div class="card">
+        <h3>Mass Assignment</h3>
+        <p style="color: var(--text-secondary); margin: 12px 0; font-size: 0.9rem;">
+            Overwrite protected object properties (like `isAdmin`) via JSON input.
+        </p>
+        <a href="/vulnerabilities/mass-assignment" class="btn btn-outline" style="width: 100%;">Exploit</a>
+    </div>
+
+    <!-- Card: GraphQL Introspection -->
+    <div class="card">
+        <h3>GraphQL Introspection</h3>
+        <p style="color: var(--text-secondary); margin: 12px 0; font-size: 0.9rem;">
+            Access full API schema documentation via enabled introspection.
+        </p>
+        <a href="/vulnerabilities/graphql" class="btn btn-outline" style="width: 100%;">Exploit</a>
+    </div>
+
+    <!-- Card: HTTP Header Injection -->
+    <div class="card">
+        <h3>Header Injection</h3>
+        <p style="color: var(--text-secondary); margin: 12px 0; font-size: 0.9rem;">
+            Inject arbitrary response headers via unvalidated input.
+        </p>
+        <a href="/vulnerabilities/header-injection?header_val=test" class="btn btn-outline"
+            style="width: 100%;">Exploit</a>
+    </div>
+
+    <!-- Card: Internal IP Disclosure -->
+    <div class="card">
+        <h3>Internal IP Disclosure</h3>
+        <p style="color: var(--text-secondary); margin: 12px 0; font-size: 0.9rem;">
+            Exposes internal network IP addresses and subnet information.
+        </p>
+        <a href="/internal-ip" class="btn btn-danger" style="width: 100%;">Exploit</a>
+    </div>
+
+    <!-- Card: Software Version Disclosure -->
+    <div class="card">
+        <h3>Version Disclosure</h3>
+        <p style="color: var(--text-secondary); margin: 12px 0; font-size: 0.9rem;">
+            Reveals software versions (Node.js, Express, DB) for CVE lookup.
+        </p>
+        <a href="/version" class="btn btn-danger" style="width: 100%;">Exploit</a>
+    </div>
+
+    <!-- Card: Environment Variables -->
+    <div class="card">
+        <h3>Environment Variables</h3>
+        <p style="color: var(--text-secondary); margin: 12px 0; font-size: 0.9rem;">
+            Dumps all process environment variables including secrets.
+        </p>
+        <a href="/env" class="btn btn-danger" style="width: 100%;">Exploit</a>
+    </div>
+
+    <!-- Card: Backup Files -->
+    <div class="card">
+        <h3>Backup Files Exposed</h3>
+        <p style="color: var(--text-secondary); margin: 12px 0; font-size: 0.9rem;">
+            Accessible .bak files containing hardcoded credentials.
+        </p>
+        <a href="/config.js.bak" class="btn btn-danger" style="width: 100%;">Exploit</a>
+    </div>
+
+    <!-- Card: .git Folder -->
+    <div class="card">
+        <h3>.git Folder Exposure</h3>
+        <p style="color: var(--text-secondary); margin: 12px 0; font-size: 0.9rem;">
+            Git repository metadata exposed, revealing source code history.
+        </p>
+        <a href="/.git/HEAD" class="btn btn-danger" style="width: 100%;">Exploit</a>
+    </div>
+
+    <!-- Card: .env File -->
+    <div class="card">
+        <h3>.env File Exposure</h3>
+        <p style="color: var(--text-secondary); margin: 12px 0; font-size: 0.9rem;">
+            Environment configuration file with AWS keys and DB passwords.
+        </p>
+        <a href="/.env" class="btn btn-danger" style="width: 100%;">Exploit</a>
+    </div>
+
+    <!-- Card: Swagger/OpenAPI -->
+    <div class="card">
+        <h3>Swagger/OpenAPI</h3>
+        <p style="color: var(--text-secondary); margin: 12px 0; font-size: 0.9rem;">
+            Full API documentation publicly accessible without auth.
+        </p>
+        <a href="/swagger.json" class="btn btn-danger" style="width: 100%;">Exploit</a>
+    </div>
+
+    <!-- Card: Directory Listing -->
+    <div class="card">
+        <h3>Directory Listing</h3>
+        <p style="color: var(--text-secondary); margin: 12px 0; font-size: 0.9rem;">
+            Browse server directories and download sensitive files.
+        </p>
+        <a href="/vulnerabilities/directory-listing" class="btn btn-danger" style="width: 100%;">Exploit</a>
+    </div>
+
+</div>

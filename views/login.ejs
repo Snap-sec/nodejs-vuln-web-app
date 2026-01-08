@@ -1,0 +1,24 @@
+<div class="login-card card">
+    <h1 class="login-title">Sign In</h1>
+    <% if (typeof error !=='undefined' && error) { %>
+        <div class="error-msg">
+            <%= error %>
+        </div>
+        <% } %>
+
+            <form action="/login" method="POST">
+                <div class="input-group">
+                    <label>Username</label>
+                    <input type="text" name="username" required placeholder="Enter username">
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" name="password" required placeholder="Enter password">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%">Login</button>
+                <div style="margin-top: 16px; text-align: center; font-size: 0.9rem;">
+                    Don't have an account? <a href="/register" style="color: var(--accent); font-weight: 500;">Sign
+                        up</a>
+                </div>
+            </form>
+</div>
